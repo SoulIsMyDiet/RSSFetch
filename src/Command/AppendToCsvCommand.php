@@ -5,14 +5,14 @@ namespace MarekDzilneRekrutacjaHRtec\Command;
 
 
 
-class WriteToCsvCommand
+class AppendToCsvCommand
 {
 
     private $rssData;
     private $path;
 
     /**
-     * WriteToCsvCommand constructor.
+     * AppendToCsvCommand constructor.
      */
     public function __construct(array $rssData, $path)
     {
