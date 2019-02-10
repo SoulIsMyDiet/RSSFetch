@@ -13,14 +13,21 @@
     "require": {
         "php": ">=7.1.0",
         "ext-SimpleXML": "^7.2",
-        "prooph/service-bus": "^6.2"
+        "prooph/service-bus": "^6.2",
+      "ext-libxml": "*"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master@dev"
+        "mockery/mockery": "dev-master@dev",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
             "MarekDzilneRekrutacjaHRtec\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MarekDzilneRekrutacjaHRtec\\": "tests/"
         }
     }
 }
