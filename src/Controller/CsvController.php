@@ -14,7 +14,6 @@ use Prooph\ServiceBus\CommandBus;
 use Prooph\ServiceBus\Plugin\Router\CommandRouter;
 
 
-
 class CsvController
 {
     /**
@@ -37,9 +36,10 @@ class CsvController
         $this->csvRepository = $csvRepository;
     }
 
-    public function writeRssDataToCsv($site, $path){
-    $rssData = new RssData($site);
-    $fetchedData = $rssData->fetchRssData();
+    public function writeRssDataToCsv($site, $path)
+    {
+        $rssData = new RssData($site);
+        $fetchedData = $rssData->fetchRssData();
         $this->commandRouter->attachToMessageBus($this->commandBus);
         $this->commandRouter
             ->route(WriteToCsvCommand::class)
@@ -48,7 +48,8 @@ class CsvController
 
     }
 
-    public function appendRssDataToCsv($site, $path){
+    public function appendRssDataToCsv($site, $path)
+    {
         $rssData = new RssData($site);
         $fetchedData = $rssData->fetchRssData();
         $this->commandRouter->attachToMessageBus($this->commandBus);
