@@ -4,12 +4,13 @@
 namespace MarekDzilneRekrutacjaHRtec;
 
 
+//use Exception;
+use Mockery\Exception;
 use SimpleXMLElement;
 include_once 'config.php';
 class RssData
 {
     private $site;
-    //private $columns;
 
     /**
      * RssData constructor.
@@ -17,7 +18,6 @@ class RssData
     public function __construct($site)
     {
         $this->site = $site;
-        //$this->columns = $columns;
     }
 
     /**
@@ -28,24 +28,27 @@ class RssData
         return $this->site;
     }
 
-//    /**
-//     * @return mixed
-//     */
-//    public function getColumns()
-//    {
-//        return $this->columns;
-//    }
-
     public function fetchRssData(){
-    $content = file_get_contents($this->site);
-$doc = new SimpleXmlElement($content);
-$rows = array();
+        try {
+            $content = @file_get_contents($this->site);
+        if($content == false){
+            throw new Exception('Nie poprawny format danych!');
+        };
+        //try {
+            libxml_use_internal_errors(true);
+            $doc = new SimpleXmlElement($content);
+        }catch(Exception $e){
+            libxml_clear_errors();
+            echo $e->getMessage();
+            throw $e;
+        }
+        $rows = array();
 foreach($doc->channel->item as $item)
 {
     $dc = $item->children("http://purl.org/dc/elements/1.1/");
     $rows[] = array_merge((array)$item, (array)$dc);
 }
-$this->filterData($rows, $this);
+$this->filterData($rows);
         return $rows;
 
     }

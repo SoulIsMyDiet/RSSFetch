@@ -1,4 +1,4 @@
 <?php
 
-const PATH = 'testowy.csv';
+const PATH = 'csvFile';
 const COLUMNS = array('title', 'link', 'description', 'pubDate', 'creator');
