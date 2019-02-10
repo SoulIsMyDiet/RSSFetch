@@ -1,75 +1,41 @@
-Package Skeleton
-================
-
-[![Build Status](http://img.shields.io/travis/SammyK/package-skeleton.svg)](https://travis-ci.org/SammyK/package-skeleton)
-[![Total Downloads](http://img.shields.io/packagist/dm/sammyk/package-skeleton.svg)](https://packagist.org/packages/sammyk/package-skeleton)
-[![Latest Stable Version](http://img.shields.io/packagist/v/sammyk/package-skeleton.svg)](https://packagist.org/packages/sammyk/package-skeleton)
-[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/SammyK/package-skeleton/blob/master/LICENSE)
-
-
-:package_description
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [Credits](#credits)
-- [License](#license)
-
 
 Installation
 ------------
 
-Add the package-skeleton package to your `composer.json` file.
+clone or download app to your folder.
 
-``` json
-{
-    "require": {
-        "sammyk/package-skeleton": "1.0.*"
-    }
-}
+Go into downloaded or cloned folder and type: 
 ```
-
-Or via the command line in the root of your Laravel installation.
-
-``` bash
-$ composer require "sammyk/package-skeleton:1.0*"
+composer install
 ```
 
 Usage
 -----
-
-``` php
-use SammyK\Skeleton;
-
-$skeleton = new Skeleton();
-echo $skeleton->echoPhrase('Hello, World!');
+There are two commands you can use in the terminal. Just go into the main folder and type one of the commands:
 
 ```
+php src/console.php csv:simple URL PATH
+php src/console.php csv:extended URL PATH
+```
+where URL PATH is an adress to page with feed content for example:
+ ```
+ php src/console.php csv:simple http://feeds.nationalgeographic.com/ng/News/News_Main
+ ```
+The first command is to fetch and write data into csv file, second is to fetch and append data into csv file
+
+You can change your destination file with the simple config file: config.php by changing the PATH const
+
+
+
+
 
 
 Testing
 -------
+you can test app with 3 possible commands from main folder in terminal
 
 ``` bash
-$ phpunit
+ vendor/bin/phpunit tests/generalTest.php
+ vendor/bin/phpunit tests/writeTest.php
+ vendor/bin/phpunit tests/appendTest.php
 ```
-
-
-Contributing
-------------
-
-Please see [CONTRIBUTING](https://github.com/SammyK/package-skeleton/blob/master/CONTRIBUTING.md) for details.
-
-
-Credits
--------
-
-- [Sammy Kaye Powers](https://github.com/SammyK)
-- [All Contributors](https://github.com/SammyK/package-skeleton/contributors)
-
-
-License
--------
-
-The MIT License (MIT). Please see [License File](https://github.com/SammyK/package-skeleton/blob/master/LICENSE) for more information.

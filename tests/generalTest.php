@@ -26,20 +26,23 @@ class generalTest extends TestCase
     {
         $this->expectExceptionMessage('String could not be parsed as XML');
 
-       $rssData = new RssData($site);
+        $rssData = new RssData($site);
 
-       $rssData->fetchRssData();
+        $rssData->fetchRssData();
 
     }
-    public function getSite(){
+
+    public function getSite()
+    {
         return [
-             ['https://feedfury.com/'],
+            ['https://feedfury.com/'],
             ['https://www.google.com/'],
             ['https://www.wp.pl/']
         ];
     }
 
-    public function testExceptionIfPageDoesNotExist(){
+    public function testExceptionIfPageDoesNotExist()
+    {
 
         $this->expectExceptionMessage('Nie poprawny format danych!');
 
@@ -49,7 +52,8 @@ class generalTest extends TestCase
 
     }
 
-    public function testIfAppendGivesMoreLinesThenWrite(){
+    public function testIfAppendGivesMoreLinesThenWrite()
+    {
 
         $firstArray = array(array('value1', 'value1'));
         $secondArray = array(array('value2', 'value2'));
