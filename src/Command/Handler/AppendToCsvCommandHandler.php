@@ -4,11 +4,12 @@
 namespace MarekDzilneRekrutacjaHRtec\Command\Handler;
 
 
+use MarekDzilneRekrutacjaHRtec\Command\AppendToCsvCommand;
 use MarekDzilneRekrutacjaHRtec\Command\WriteToCsvCommand;
 use MarekDzilneRekrutacjaHRtec\CsvFile;
 use MarekDzilneRekrutacjaHRtec\Repo\Repository;
 
-class WriteToCsvCommandHandler
+class AppendToCsvCommandHandler
 {
     /**
      * @var Repository
@@ -23,9 +24,9 @@ class WriteToCsvCommandHandler
         $this->csvRepository = $csvRepository;
     }
 
-    public function __invoke(WriteToCsvCommand $writeToCsvCommand)
+    public function __invoke(AppendToCsvCommand $writeToCsvCommand)
     {
         $csvFile = CsvFile::fromContentAndPath($writeToCsvCommand->getRssData(), $writeToCsvCommand->getPath());
-        $this->csvRepository->write($csvFile);
+        $this->csvRepository->append($csvFile);
     }
 }
