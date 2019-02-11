@@ -5,6 +5,7 @@ namespace MarekDzilneRekrutacjaHRtec;
 
 use MarekDzilneRekrutacjaHRtec\Controller\CsvController;
 use MarekDzilneRekrutacjaHRtec\Repo\OnDiskRepository;
+use Exception;
 
 include_once 'config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -15,7 +16,7 @@ if (!isset($argv[1])) {
 }
 
 $path = substr(PATH, -4, 4) === '.csv' ? PATH : PATH . '.csv';
-
+try{
 
 $repo = new OnDiskRepository();
 $controller = new CsvController($repo);
@@ -36,4 +37,10 @@ switch ($argv[1]) {
         break;
     default:
         echo 'Podano nieprawidłową komende!';
+
+}
+} catch (Exception $e) {
+    libxml_clear_errors();
+    echo $e->getMessage();
+    throw $e;
 }

@@ -4,8 +4,7 @@
 namespace MarekDzilneRekrutacjaHRtec;
 
 
-//use Exception;
-use Mockery\Exception;
+use Exception;
 use SimpleXMLElement;
 
 include_once 'config.php';
@@ -30,21 +29,19 @@ class RssData
         return $this->site;
     }
 
+    /**
+     * @return array
+     * @throws Exception
+     */
     public function fetchRssData()
     {
-        try {
-            $content = @file_get_contents($this->site);
-            if ($content == false) {
-                throw new Exception('Nie poprawny format danych!');
-            };
-            //try {
-            libxml_use_internal_errors(true);
-            $doc = new SimpleXmlElement($content);
-        } catch (Exception $e) {
-            libxml_clear_errors();
-            echo $e->getMessage();
-            throw $e;
-        }
+        $content = file_get_contents($this->site);
+        if ($content == false) {
+            throw new Exception('Nie poprawny format danych!');
+        };
+        libxml_use_internal_errors(true);
+        $doc = new SimpleXmlElement($content);
+
         $rows = array();
         foreach ($doc->channel->item as $item) {
             $dc = $item->children("http://purl.org/dc/elements/1.1/");
@@ -55,6 +52,11 @@ class RssData
 
     }
 
+    /**
+     * Removing html tags from description column, converting data format, setting needed columns
+     *
+     * @param $rows
+     */
     private function filterData(&$rows)
     {
         foreach ($rows as &$row) {

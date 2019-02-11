@@ -9,6 +9,11 @@ use MarekDzilneRekrutacjaHRtec\CsvFile;
 
 class OnDiskRepository implements Repository
 {
+    /**
+     * Write data to chosen file
+     *
+     * @param CsvFile $csvFile
+     */
     public function write(CsvFile $csvFile)
     {
         $file = fopen($csvFile->getPath(), 'w');
@@ -20,6 +25,11 @@ class OnDiskRepository implements Repository
 
     }
 
+    /**
+     * Append data to chosen file
+     *
+     * @param CsvFile $csvFile
+     */
     public function append(CsvFile $csvFile)
     {
         $file = fopen($csvFile->getPath(), 'a');
