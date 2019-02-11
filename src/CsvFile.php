@@ -34,6 +34,11 @@ class CsvFile
         return $this->path;
     }
 
+    /**
+     * @param $content
+     * @param $path
+     * @return CsvFile
+     */
     public static function fromContentAndPath($content, $path)
     {
         return new self($content, $path);

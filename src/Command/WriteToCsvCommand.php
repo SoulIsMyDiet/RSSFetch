@@ -12,6 +12,8 @@ class WriteToCsvCommand
 
     /**
      * WriteToCsvCommand constructor.
+     * @param array $rssData
+     * @param $path
      */
     public function __construct(array $rssData, $path)
     {
@@ -21,6 +23,9 @@ class WriteToCsvCommand
     }
 
 
+    /**
+     * @return array
+     */
     public function getRssData()
     {
         return $this->rssData;

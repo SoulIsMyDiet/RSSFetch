@@ -26,6 +26,7 @@ class CsvController
     /**
      *
      * CsvController constructor.
+     * @param Repository $csvRepository
      */
     public function __construct(Repository $csvRepository)
     {
@@ -36,6 +37,11 @@ class CsvController
         $this->csvRepository = $csvRepository;
     }
 
+    /**
+     * @param $site
+     * @param $path
+     * @throws \Exception
+     */
     public function writeRssDataToCsv($site, $path)
     {
         $rssData = new RssData($site);
@@ -48,6 +54,11 @@ class CsvController
 
     }
 
+    /**
+     * @param $site
+     * @param $path
+     * @throws \Exception
+     */
     public function appendRssDataToCsv($site, $path)
     {
         $rssData = new RssData($site);
