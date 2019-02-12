@@ -23,11 +23,20 @@ where URL PATH is an adress to page with feed content for example:
  ```
 The first command is to fetch and write data into csv file, second is to fetch and append data into csv file
 
-You can change your destination file with the simple config file: config.php by changing the PATH const
 
+Config
+-------
+You can change your destination file with the simple config file: config.php by changing the PATH const for example:
+```
+const PATH = '../new_destination';
 
+```
+You can also change the order or choose what columns you want to have in you csv file(dont worry if you put the name of the columns that does not exist, app will ignore it)
+```
+const COLUMNS = array('description', 'link');
 
-
+```
+example above if set in config.php will write only those 2 columns in that order
 
 
 Testing

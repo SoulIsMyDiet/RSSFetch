@@ -16,31 +16,30 @@ if (!isset($argv[1])) {
 }
 
 $path = substr(PATH, -4, 4) === '.csv' ? PATH : PATH . '.csv';
-try{
+try {
 
-$repo = new OnDiskRepository();
-$controller = new CsvController($repo);
-switch ($argv[1]) {
-    case 'csv:simple':
-        if (isset($argv[2])) {
-            $controller->writeRssDataToCsv($argv[2], $path);
-        } else {
-            echo 'nie wybrano URL!';
-        }
-        break;
-    case 'csv:extended':
-        if (isset($argv[2])) {
-            $controller->appendRssDataToCsv($argv[2], $path);
-        } else {
-            echo 'nie wybrano URL!';
-        }
-        break;
-    default:
-        echo 'Podano nieprawidłową komende!';
+    $repo = new OnDiskRepository();
+    $controller = new CsvController($repo);
+    switch ($argv[1]) {
+        case 'csv:simple':
+            if (isset($argv[2])) {
+                $controller->writeRssDataToCsv($argv[2], $path);
+            } else {
+                echo 'nie wybrano URL!';
+            }
+            break;
+        case 'csv:extended':
+            if (isset($argv[2])) {
+                $controller->appendRssDataToCsv($argv[2], $path);
+            } else {
+                echo 'nie wybrano URL!';
+            }
+            break;
+        default:
+            echo 'Podano nieprawidłową komende!';
 
-}
+    }
 } catch (Exception $e) {
     libxml_clear_errors();
     echo $e->getMessage();
-    throw $e;
 }

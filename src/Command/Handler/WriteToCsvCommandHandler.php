@@ -8,6 +8,10 @@ use MarekDzilneRekrutacjaHRtec\Command\WriteToCsvCommand;
 use MarekDzilneRekrutacjaHRtec\CsvFile;
 use MarekDzilneRekrutacjaHRtec\Repo\Repository;
 
+/**
+ * Class WriteToCsvCommandHandler
+ * @package MarekDzilneRekrutacjaHRtec\Command\Handler
+ */
 class WriteToCsvCommandHandler
 {
     /**

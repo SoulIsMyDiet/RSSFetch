@@ -3,10 +3,13 @@
 
 namespace MarekDzilneRekrutacjaHRtec\Repo;
 
-include_once __DIR__ . '/../config.php';
 
 use MarekDzilneRekrutacjaHRtec\CsvFile;
 
+/**
+ * Class OnDiskRepository
+ * @package MarekDzilneRekrutacjaHRtec\Repo
+ */
 class OnDiskRepository implements Repository
 {
     /**
