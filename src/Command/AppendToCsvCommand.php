@@ -4,10 +4,20 @@
 namespace MarekDzilneRekrutacjaHRtec\Command;
 
 
+/**
+ * Class AppendToCsvCommand
+ * @package MarekDzilneRekrutacjaHRtec\Command
+ */
 class AppendToCsvCommand
 {
 
+    /**
+     * @var array Our fetched and converted into array rss data
+     */
     private $rssData;
+    /**
+     * @var string Path to our csv file
+     */
     private $path;
 
     /**

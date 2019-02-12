@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: anzelm
- * Date: 10.02.19
- * Time: 13:27
- */
 
 namespace MarekDzilneRekrutacjaHRtec;
 
+include_once __DIR__.'/../src/config.php';
 
 use MarekDzilneRekrutacjaHRtec\Command\Handler\WriteToCsvCommandHandler;
 use MarekDzilneRekrutacjaHRtec\Command\WriteToCsvCommand;

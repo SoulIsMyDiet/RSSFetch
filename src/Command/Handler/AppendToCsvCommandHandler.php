@@ -8,6 +8,10 @@ use MarekDzilneRekrutacjaHRtec\Command\AppendToCsvCommand;
 use MarekDzilneRekrutacjaHRtec\CsvFile;
 use MarekDzilneRekrutacjaHRtec\Repo\Repository;
 
+/**
+ * Class AppendToCsvCommandHandler
+ * @package MarekDzilneRekrutacjaHRtec\Command\Handler
+ */
 class AppendToCsvCommandHandler
 {
     /**
@@ -24,6 +28,9 @@ class AppendToCsvCommandHandler
         $this->csvRepository = $csvRepository;
     }
 
+    /**
+     * @param AppendToCsvCommand $appendToCsvCommand
+     */
     public function __invoke(AppendToCsvCommand $appendToCsvCommand)
     {
         $csvFile = CsvFile::fromContentAndPath($appendToCsvCommand->getRssData(), $appendToCsvCommand->getPath());

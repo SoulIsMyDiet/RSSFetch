@@ -14,14 +14,25 @@ use Prooph\ServiceBus\CommandBus;
 use Prooph\ServiceBus\Plugin\Router\CommandRouter;
 
 
+/**
+ * Class CsvController
+ * @package MarekDzilneRekrutacjaHRtec\Controller
+ */
 class CsvController
 {
     /**
      * @var Repository
      */
     private $csvRepository;
+    /**
+     * @var CommandBus
+     */
     private $commandBus;
+    /**
+     * @var CommandRouter
+     */
     private $commandRouter;
+
 
     /**
      *
@@ -38,8 +49,8 @@ class CsvController
     }
 
     /**
-     * @param $site
-     * @param $path
+     * @param $site string
+     * @param $path string
      * @throws \Exception
      */
     public function writeRssDataToCsv($site, $path)
